@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>售电V3前端接口约定 | hw</title><meta name="description" content="售电V3前端接口约定"><meta name="keywords" content="接口"><meta name="author" content="hw"><meta name="copyright" content="hw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="售电V3前端接口约定"><meta name="twitter:description" content="售电V3前端接口约定"><meta name="twitter:image" content="http://hwei.top/img/post.jpg"><meta property="og:type" content="article"><meta property="og:title" content="售电V3前端接口约定"><meta property="og:url" content="http://hwei.top/2020/08/10/%E5%94%AE%E7%94%B5V3%E6%8E%A5%E5%8F%A3%E6%A0%BC%E5%BC%8F/"><meta property="og:site_name" content="hw"><meta property="og:description" content="售电V3前端接口约定"><meta property="og:image" content="http://hwei.top/img/post.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://hwei.top/2020/08/10/%E5%94%AE%E7%94%B5V3%E6%8E%A5%E5%8F%A3%E6%A0%BC%E5%BC%8F/"><link rel="next" title=" 售电标准V3" href="http://hwei.top/2020/07/27/onCloudComponent/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: false  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">1</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/post.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">hw</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">售电V3前端接口约定</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-08-10 10:35:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-08-10</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-08-10 10:39:31"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-08-10</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><ol>
+<li>曲线管理模块</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>key</td>
+<td>string</td>
+<td></td>
+<td>数据标识</td>
+</tr>
+<tr>
+<td>month0</td>
+<td>string</td>
+<td></td>
+<td>曲线模块月列标题属性</td>
+</tr>
+<tr>
+<td>month1-12</td>
+<td>string</td>
+<td></td>
+<td>曲线模块月列内容属性 对应1-12月</td>
+</tr>
+<tr>
+<td>model</td>
+<td>array</td>
+<td></td>
+<td>典型日属性(每组数据为一列)</td>
+</tr>
+<tr>
+<td>model_title</td>
+<td>string</td>
+<td></td>
+<td>典型日标题</td>
+</tr>
+<tr>
+<td>modelType1</td>
+<td>string</td>
+<td></td>
+<td>典型日内容属性</td>
+</tr>
+<tr>
+<td>season</td>
+<td>array</td>
+<td></td>
+<td>季节</td>
+</tr>
+<tr>
+<td>season_title</td>
+<td>string</td>
+<td></td>
+<td>季节标题</td>
+</tr>
+<tr>
+<td>season_1</td>
+<td>string</td>
+<td></td>
+<td>季节内容属性 season_1-season_4 对应1-4季节</td>
+</tr>
+<tr>
+<td>month1_dayList</td>
+<td>array</td>
+<td></td>
+<td>每月的日期信息集合,类推 month1_dayList-month12_dayList 对应每月日期信息</td>
+</tr>
+<tr>
+<td>day0</td>
+<td>string</td>
+<td></td>
+<td>曲线模块日列标题属性</td>
+</tr>
+<tr>
+<td>day0-day31</td>
+<td>string</td>
+<td></td>
+<td>对应每日属性 1-31号</td>
+</tr>
+<tr>
+<td>day1_type</td>
+<td>obj</td>
+<td></td>
+<td>对应1日类型,类推day1_type…day31_type 对应1-31日类型</td>
+</tr>
+<tr>
+<td>tradingday</td>
+<td>number</td>
+<td></td>
+<td>现货交易日设置类型 0无状态 1为现货交易日</td>
+</tr>
+<tr>
+<td>holiday</td>
+<td>number</td>
+<td></td>
+<td>节假日设置类型 0工作日 1节假日 2星期六 3星期日</td>
+</tr>
+<tr>
+<td>day1_hourList</td>
+<td>array</td>
+<td></td>
+<td>每日的小时信息集合 ,day1_hourList-day31_hourList 对应每天24时信息</td>
+</tr>
+<tr>
+<td>hour0</td>
+<td>string</td>
+<td></td>
+<td>曲线模块时列标题属性</td>
+</tr>
+<tr>
+<td>hour1-hour24</td>
+<td>string</td>
+<td></td>
+<td>对应每小时属性 1- 24小时</td>
+</tr>
+</tbody></table>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;key&quot;:2020,</span><br><span class="line">        &quot;month0&quot;:&quot;比例&quot;,</span><br><span class="line">        &quot;model&quot;:[</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_model1&quot;,</span><br><span class="line">                &quot;model_title&quot;:&quot;节假日&quot;,</span><br><span class="line">                &quot;modelType1&quot;:0.5</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_model2&quot;,</span><br><span class="line">                &quot;model_title&quot;:&quot;工作日&quot;,</span><br><span class="line">                &quot;modelType1&quot;:1</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_model3&quot;,</span><br><span class="line">                &quot;model_title&quot;:&quot;星期日&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_model4&quot;,</span><br><span class="line">                &quot;model_title&quot;:&quot;星期六&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;season&quot;:[</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_season&quot;,</span><br><span class="line">                &quot;season_title&quot;:&quot;比例&quot;,</span><br><span class="line">                &quot;season_1&quot;:,</span><br><span class="line">            &#125;,</span><br><span class="line">           </span><br><span class="line">        ],</span><br><span class="line">        &quot;month1_dayList&quot;:[</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;key&quot;:&quot;2020_1&quot;,</span><br><span class="line">                &quot;day0&quot;:&quot;比例&quot;,</span><br><span class="line">                &quot;day1_type&quot;:&#123;</span><br><span class="line">                    &quot;tradingday&quot;:0,</span><br><span class="line">                    &quot;holiday&quot;:0</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;day1_hourList&quot;:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;key&quot;:&quot;2020_1_1_d1&quot;,</span><br><span class="line">                        &quot;hour0&quot;:&quot;D1&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;key&quot;:&quot;2020_1_1_d2&quot;,</span><br><span class="line">                        &quot;hour0&quot;:&quot;D2&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;key&quot;:&quot;2020_1_1_d3&quot;,</span><br><span class="line">                        &quot;hour0&quot;:&quot;D3&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8E%A5%E5%8F%A3/">接口</a></div><div class="post_share"><div class="social-share" data-image="/img/post.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/07/27/onCloudComponent/"><img class="next_cover lazyload" data-src="/img/post.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"> 售电标准V3</div></div></a></div></nav></article></main><footer id="footer" style="background-image: url(/img/post.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By hw</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>
